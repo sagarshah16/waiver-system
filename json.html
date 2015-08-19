@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8" />
+        <title>JSON example</title>
+        <script>
+            /*var jsonData = "{\"files\":[\"Offer Letter\", \"ISSS Form\", \"CPT Request\", \"CS Dept Form\"], \"text\":\"Gimme your files!!\"}";*/
+            var jsonData = "{\"files\":[\"nnn\", \"nnn\"]}";
+            function processJSON()
+            {
+                theData = JSON.parse(jsonData);
+                theData.files.sort();
+                p = document.createElement("p");
+                txt = document.createTextNode(theData.text);
+                p.appendChild(txt);
+                document.getElementById("theForm").appendChild(p);
+                for (i in theData.files)
+                {
+                    label = document.createElement("label");
+                    labelTxt = document.createTextNode(theData.files[i]);
+                    label.appendChild(labelTxt);
+                    document.getElementById("theForm").appendChild(label)
+                    document.getElementById("theForm").innerHTML += "<input type='file' name='" + i +"' /><br/>";
+                }
+            }
+        </script>
+    </head>
+    <body onload="processJSON()">
+        <form id="theForm"></form>
+    </body>
+</html>
